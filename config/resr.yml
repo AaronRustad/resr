@@ -1,0 +1,11 @@
+slack_token: ''
+
+channels:
+  dev-deploy-io:
+    io: ':flag-io:'
+    cat: ':cat2:'
+    dog: ':trashdog:'
+
+  dev-deploys:
+    prod: ':cat2:'
+    canary: ':canary:'
