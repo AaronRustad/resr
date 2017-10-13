@@ -1,28 +1,38 @@
 # Resr
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/resr`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A ridiculous way soft-managing ownership of staging servers, using Slack and channel topics for state.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'resr'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
     $ gem install resr
+    
+## Setup
+
+Copy the following to `~/.resr.yml`, and adjust as necessary.
+
+```yml
+slack_token: [YOUR_OAUTH_SLACK_TOKEN]
+
+channels:
+  dev-deploy-io:         # Your slack channel name
+    io: ':flag-io:'      # Mapping between the server console name and how 
+    cat: ':cat2:'        # it is represented in Slack. In this case, 
+    dog: ':trashdog:'    # as emoji.
+
+  dev-deploys:
+    prod: ':cat2:'
+    canary: ':canary:'
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+    Commands:
+      resr free SERVER     # Free/release ownership of the SERVER
+      resr help [COMMAND]  # Describe available commands or one specific command
+      resr list            # List all servers and who owns them
+      resr take SERVER     # Take ownership of the SERVER
+      
+The command options `free`, `list`, and `take` are aliased as `f`, `l`, and `t` respectively.
 
 ## Development
 
@@ -32,7 +42,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/resr.
+Bug reports and pull requests are welcome on GitHub at https://github.com/AaronRustad/resr.
 
 ## License
 
