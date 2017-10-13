@@ -17,7 +17,7 @@ Visit the [Slack Legacy tokens](https://api.slack.com/custom-integrations/legacy
 Copy the following to `~/.resr.yml`, and add the token that was generated in the previous section.
 
 ```yml
-slack_token: 'YOUR_OAUTH_SLACK_TOKEN'
+slack_token: 'YOUR_LEGACY_SLACK_TOKEN'
 
 channels:
   dev-deploy-io:         # Your Slack channel that manages state
