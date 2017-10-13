@@ -33,10 +33,11 @@ channels:
 ## Usage
 
     Commands:
-      resr free SERVER     # Free/release ownership of the SERVER
-      resr help [COMMAND]  # Describe available commands or one specific command
-      resr list            # List all servers and who owns them
-      resr take SERVER     # Take ownership of the SERVER
+      resr free SERVER           # Free/release ownership of the SERVER
+      resr help [COMMAND]        # Describe available commands or one specific command
+      resr list                  # List all servers and who owns them
+      resr take SERVER [DETAILS] # Take ownership of the SERVER
+                                 # DETAILS will use the current git branch if ommitted
       
 The command options `free`, `list`, and `take` are aliased as `f`, `l`, and `t` respectively.
 
