@@ -1,6 +1,6 @@
 # Resr
 
-A ridiculous way of managing soft-ownership of staging servers, using Slack and channel topics for state.
+A ridiculously simple way of managing soft-ownership of staging servers using Slack and channel topics for state.
 
 ## Installation
 
