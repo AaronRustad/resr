@@ -45,7 +45,11 @@ module Resr
     end
 
     def write_topic
-      @client.channels_setTopic(channel: channel_name, topic: to_slack, as_user: true)
+      if ENV['DRY_RUN'] == '1'
+        puts to_slack
+      else
+        @client.channels_setTopic(channel: channel_name, topic: to_slack, as_user: true)
+      end
     end
 
     def topic
