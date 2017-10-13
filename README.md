@@ -8,10 +8,16 @@ A ridiculous way soft-managing ownership of staging servers, using Slack and cha
     
 ## Setup
 
-Copy the following to `~/.resr.yml`, and adjust as necessary.
+### Generate a legacy token in Slack
+
+Visit the [Slack Legacy tokens](https://api.slack.com/custom-integrations/legacy-tokens) page and generate a token for your Workspace/User.
+
+### Configure resr
+
+Copy the following to `~/.resr.yml`, add add the token that was generated in the previous section.
 
 ```yml
-slack_token: [YOUR_OAUTH_SLACK_TOKEN]
+slack_token: 'YOUR_OAUTH_SLACK_TOKEN'
 
 channels:
   dev-deploy-io:         # Your slack channel name
