@@ -3,6 +3,7 @@ require "resr"
 
 module Resr
   class CLI < Thor
+    map %w[--version -v] => :__print_version
 
     desc 'take SERVER', 'Take ownership of the SERVER'
     option aliases: :t
@@ -31,6 +32,11 @@ module Resr
           end
         end
       end
+    end
+
+    desc "--version, -v", "Print the version"
+    def __print_version
+      puts Resr::VERSION
     end
   end
 end
