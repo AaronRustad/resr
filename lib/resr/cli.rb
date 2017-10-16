@@ -9,7 +9,7 @@ module Resr
     option aliases: :t
     def take(server, details = nil)
       details = `git rev-parse --abbrev-ref HEAD`.chomp if details.nil?
-      say Resr.take(server, details: details)
+      Resr.take(server, details: details)
     end
 
     desc 'free SERVER', 'Free/release ownership of the SERVER'
