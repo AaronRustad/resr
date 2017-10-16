@@ -1,6 +1,6 @@
 # Resr
 
-A ridiculous way soft-managing ownership of staging servers, using Slack and channel topics for state.
+A ridiculously simple way of managing soft-ownership of staging servers using Slack and channel topics for state.
 
 ## Installation
 
@@ -8,13 +8,19 @@ A ridiculous way soft-managing ownership of staging servers, using Slack and cha
     
 ## Setup
 
-Copy the following to `~/.resr.yml`, and adjust as necessary.
+### Generate a legacy token in Slack
+
+Visit the [Slack Legacy tokens](https://api.slack.com/custom-integrations/legacy-tokens) page and generate a token for your Workspace/User.
+
+### Configure resr
+
+Copy the following to `~/.resr.yml`, and add the token that was generated in the previous section.
 
 ```yml
-slack_token: [YOUR_OAUTH_SLACK_TOKEN]
+slack_token: 'YOUR_LEGACY_SLACK_TOKEN'
 
 channels:
-  dev-deploy-io:         # Your slack channel name
+  dev-deploy-io:         # Your Slack channel that manages state
     io: ':flag-io:'      # Mapping between the server console name and how 
     cat: ':cat2:'        # it is represented in Slack. In this case, 
     dog: ':trashdog:'    # as emoji.
@@ -27,10 +33,11 @@ channels:
 ## Usage
 
     Commands:
-      resr free SERVER     # Free/release ownership of the SERVER
-      resr help [COMMAND]  # Describe available commands or one specific command
-      resr list            # List all servers and who owns them
-      resr take SERVER     # Take ownership of the SERVER
+      resr free SERVER           # Free/release ownership of the SERVER
+      resr help [COMMAND]        # Describe available commands or one specific command
+      resr list                  # List all servers and who owns them
+      resr take SERVER [DETAILS] # Take ownership of the SERVER
+                                 # DETAILS will use the current git branch if omitted
       
 The command options `free`, `list`, and `take` are aliased as `f`, `l`, and `t` respectively.
 
