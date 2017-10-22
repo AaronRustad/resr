@@ -1,5 +1,5 @@
-require "thor"
-require "resr"
+require 'thor'
+require 'resr'
 
 module Resr
   class CLI < Thor
@@ -51,7 +51,7 @@ module Resr
       end
     end
 
-    desc "--version, -v", "Display the current version"
+    desc '--version, -v', 'Display the current version'
     def __print_version
       puts Resr::VERSION
     end

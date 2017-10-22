@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require "resr/cli"
+require 'resr/cli'
 
 Resr::CLI.start

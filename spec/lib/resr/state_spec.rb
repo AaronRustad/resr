@@ -1,9 +1,9 @@
-require "spec_helper"
+require 'spec_helper'
 
 RSpec.describe Resr::State do
   let(:name) { 'reservations' }
   let(:mappings) { { 'cat' => ':cat:', 'io' => ':flag-io:', 'cat2' => ':cat2:', 'bird' => ':bird:' } }
-  let(:client) { double("SlackClient") }
+  let(:client) { double('SlackClient') }
   let(:state) { ':flag-io: user_1, :cat: user_2, :bird:, :cat2: user_4' }
 
   subject { Resr::State.new(name, mappings, client) }

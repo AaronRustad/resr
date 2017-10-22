@@ -1,5 +1,5 @@
-require "resr/state"
-require "resr/version"
+require 'resr/state'
+require 'resr/version'
 require 'slack'
 require 'yaml'
 
@@ -11,19 +11,19 @@ module Resr
   end
 
   def self.take(server, details: nil)
-    channel = channels.find {|channel| channel.server? server}
+    channel = channels.find { |channel| channel.server? server }
     channel.set_details(server, details)
     channel.save
   end
 
   def self.free(server)
-    channel = channels.find {|channel| channel.server? server}
+    channel = channels.find { |channel| channel.server? server }
     channel.set_details(server, nil)
     channel.save
   end
 
   def self.config
-    @config ||= YAML::load_file(config_file_location)
+    @config ||= YAML.load_file(config_file_location)
   end
 
   private
@@ -40,10 +40,9 @@ module Resr
     end
 
     config_file =
-      case
-      when File.file?(DEFAULT_CONFIG)
+      if File.file?(DEFAULT_CONFIG)
         DEFAULT_CONFIG
-      when File.file?(File.join(Dir.home, DEFAULT_CONFIG))
+      elsif File.file?(File.join(Dir.home, DEFAULT_CONFIG))
         File.join(Dir.home, DEFAULT_CONFIG)
       else
         raise 'Resr config has not been found.'
@@ -58,12 +57,11 @@ module Resr
     config.fetch('slack_token')
   end
 
-
   def self.slack_client
     @slack_client ||=
       Slack.configure do |config|
         config.token = slack_token
       end
-      Slack::Web::Client.new
+    Slack::Web::Client.new
   end
 end
