@@ -5,7 +5,12 @@ module Resr
   class CLI < Thor
     map %w[--version -v] => :__print_version
 
-    desc 'take SERVER', 'Take ownership of the SERVER'
+    desc 'take SERVER [DESC]', 'Take ownership of the SERVER and set an optional description'
+    long_desc <<-LONGDESC
+      `resr free SERVER` will reserve SERVER using the current git branch name
+
+      `resr free SERVER 'custom desc'` will reserve SERVER using 'custom desc'
+    LONGDESC
     option aliases: :t
     def take(server, details = nil)
       details = `git rev-parse --abbrev-ref HEAD`.chomp if details.nil?
@@ -46,7 +51,7 @@ module Resr
       end
     end
 
-    desc "--version, -v", "Print the version"
+    desc "--version, -v", "Display the current version"
     def __print_version
       puts Resr::VERSION
     end
