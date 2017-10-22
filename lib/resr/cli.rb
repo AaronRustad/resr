@@ -9,13 +9,25 @@ module Resr
     option aliases: :t
     def take(server, details = nil)
       details = `git rev-parse --abbrev-ref HEAD`.chomp if details.nil?
-      Resr.take(server, details: details)
+      response = Resr.take(server, details: details)
+
+      if response.ok?
+        say "Reserved #{server}"
+      else
+        say "Reservation failed: #{response.error}"
+      end
     end
 
     desc 'free SERVER', 'Free/release ownership of the SERVER'
     option aliases: :f
     def free(server)
-      Resr.free server
+      response = Resr.free server
+
+      if response.ok?
+        say "Released #{server}"
+      else
+        say "Release failed: #{response.error}"
+      end
     end
 
     desc 'list', 'List all servers and who owns them'
