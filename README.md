@@ -5,7 +5,7 @@ A ridiculously simple way of managing soft-ownership of staging servers using Sl
 ## Installation
 
     $ gem install resr
-    
+
 ## Setup
 
 ### Generate a legacy token in Slack
@@ -21,8 +21,8 @@ slack_token: 'YOUR_LEGACY_SLACK_TOKEN'
 
 channels:
   dev-deploy-io:         # Your Slack channel that manages state
-    io: ':flag-io:'      # Mapping between the server console name and how 
-    cat: ':cat2:'        # it is represented in Slack. In this case, 
+    io: ':flag-io:'      # Mapping between the server console name and how
+    cat: ':cat2:'        # it is represented in Slack. In this case,
     dog: ':trashdog:'    # as emoji.
 
   dev-deploys:
@@ -33,12 +33,12 @@ channels:
 ## Usage
 
     Commands:
-      resr free SERVER           # Free/release ownership of the SERVER
-      resr help [COMMAND]        # Describe available commands or one specific command
-      resr list                  # List all servers and who owns them
-      resr take SERVER [DETAILS] # Take ownership of the SERVER
-                                 # DETAILS will use the current git branch if omitted
-      
+      resr --version, -v       # Display the current version
+      resr free SERVER         # Free/release ownership of the SERVER
+      resr help [COMMAND]      # Describe available commands or one specific command
+      resr list                # List all servers and who owns them
+      resr take SERVER [DESC]  # Take ownership of the SERVER and set an optional description
+
 The command options `free`, `list`, and `take` are aliased as `f`, `l`, and `t` respectively.
 
 ## Development
