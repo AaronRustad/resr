@@ -13,3 +13,4 @@
 *.gem
 .rspec_status
 .tags
+.resr.yml
