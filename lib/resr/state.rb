@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Resr
   class State
     attr_accessor :name

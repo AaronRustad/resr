@@ -1,23 +1,25 @@
+# frozen_string_literal: true
+
 require 'resr/state'
 require 'resr/version'
 require 'slack'
 require 'yaml'
 
 module Resr
-  DEFAULT_CONFIG = '.resr.yml'.freeze
+  DEFAULT_CONFIG = '.resr.yml'
 
   def self.list
     channels
   end
 
   def self.take(server, details: nil)
-    channel = channels.find { |channel| channel.server? server }
+    channel = channels.find { |chnl| chnl.server? server }
     channel.set_details(server, details)
     channel.save
   end
 
   def self.free(server)
-    channel = channels.find { |channel| channel.server? server }
+    channel = channels.find { |chnl| chnl.server? server }
     channel.set_details(server, nil)
     channel.save
   end
@@ -26,27 +28,23 @@ module Resr
     @config ||= YAML.load_file(config_file_location)
   end
 
-  private
+  private_class_method
 
   def self.config_file_location
     if ENV['RESR_CONFIG']
       expanded_file_location = File.absolute_path(ENV['RESR_CONFIG'])
 
-      if File.file?(expanded_file_location)
-        return expanded_file_location
-      else
-        raise "Resr config not found at #{expanded_file_location}"
-      end
+      return expanded_file_location if File.file?(expanded_file_location)
+      raise "Resr config not found at #{expanded_file_location}"
     end
 
-    config_file =
-      if File.file?(DEFAULT_CONFIG)
-        DEFAULT_CONFIG
-      elsif File.file?(File.join(Dir.home, DEFAULT_CONFIG))
-        File.join(Dir.home, DEFAULT_CONFIG)
-      else
-        raise 'Resr config has not been found.'
-      end
+    if File.file?(DEFAULT_CONFIG)
+      DEFAULT_CONFIG
+    elsif File.file?(File.join(Dir.home, DEFAULT_CONFIG))
+      File.join(Dir.home, DEFAULT_CONFIG)
+    else
+      raise 'Resr config has not been found.'
+    end
   end
 
   def self.channels

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Resr do
@@ -17,34 +19,28 @@ RSpec.describe Resr do
       end
 
       context 'with an known file' do
+        let(:expected_config) do
+          {
+            'slack_token' => '',
+            'channels' => {
+              'dev-deploy-io' => {
+                'io' => ':flag-io:',
+                'cat' => ':cat2:',
+                'dog' => ':trashdog:'
+              },
+              'dev-deploys' => {
+                'prod' => ':cat2:',
+                'canary' => ':canary:'
+              }
+            }
+          }
+        end
+
         it 'raises an exception' do
           ENV['RESR_CONFIG'] = './config/resr.yml'
-          expect(Resr.config).to eq('slack_token' => '', 'channels' => { 'dev-deploy-io' => { 'io' => ':flag-io:', 'cat' => ':cat2:', 'dog' => ':trashdog:' }, 'dev-deploys' => { 'prod' => ':cat2:', 'canary' => ':canary:' } })
+          expect(Resr.config).to eq expected_config
         end
       end
     end
   end
-  # describe '.list' do
-  # subject { Resr.list }
-
-  # it 'returns a the server reservations.' do
-  # expect(subject).to_not be_nil
-  # end
-  # end
-
-  # describe '.take' do
-  # subject { Resr.take('server') }
-
-  # it 'assumes ownership of a server' do
-  # expect(subject).to eq 'OK'
-  # end
-  # end
-
-  # describe '.free' do
-  # subject { Resr.free('server') }
-
-  # it 'disowns a server' do
-  # expect(subject).to eq 'OK'
-  # end
-  # end
 end
