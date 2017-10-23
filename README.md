@@ -1,4 +1,5 @@
 [![Gem Version](https://badge.fury.io/rb/resr.svg)](https://badge.fury.io/rb/resr)
+[![Build Status](https://travis-ci.org/AaronRustad/resr.svg?branch=master)](https://travis-ci.org/AaronRustad/resr)
 
 # Resr
 
