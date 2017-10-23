@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/resr.svg)](https://badge.fury.io/rb/resr)
+
 # Resr
 
 A ridiculously simple way of managing soft-ownership of staging servers using Slack and channel topics for state.
